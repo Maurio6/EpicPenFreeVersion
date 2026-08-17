@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# configuracion local de Claude Code / local Claude Code settings
+.claude/
