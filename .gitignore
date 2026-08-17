@@ -3,5 +3,10 @@ __pycache__/
 .venv/
 venv/
 
+# compilacion del .exe: va a Releases, no al repo / build artifacts go to Releases
+build/
+dist/
+*.spec
+
 # configuracion local de Claude Code / local Claude Code settings
 .claude/

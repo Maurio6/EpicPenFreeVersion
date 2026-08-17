@@ -5,6 +5,8 @@ Sin instalar nada más que Python.
 
 *Draw on top of anything on your screen — slides, videos, code, the browser. No dependencies beyond Python.*
 
+![EpicPen anotando una presentación](docs/demo.png)
+
 **[Español](#español) · [English](#english)**
 
 ---
@@ -25,17 +27,14 @@ que hay debajo.
 - Guardar la pantalla anotada como PNG
 - Modo click-through: la tinta se queda visible y seguís usando el ordenador normalmente
 
-### Requisitos
+### Descarga
 
-- **Windows 10 u 11**
-- **Python 3.8 o superior** con tkinter (viene incluido en el instalador oficial de
-  [python.org](https://python.org); es la opción *tcl/tk and IDLE*, marcada por defecto)
+**La forma fácil:** bajá `EpicPen.exe` desde
+[Releases](https://github.com/Maurio6/EpicPenFreeVersion/releases) y hacé doble click. Son 11 MB,
+no hay instalador y **no necesitás tener Python**. Como no está firmado digitalmente, la primera vez
+Windows puede mostrar un aviso de SmartScreen: *Más información → Ejecutar de todas formas*.
 
-**No hay librerías que instalar.** Todo sale de la biblioteca estándar: `tkinter` para la interfaz,
-`ctypes` para hablar con Windows y `zlib` para escribir los PNG. Por eso no vas a encontrar un
-`requirements.txt` en el repo: no hay nada que poner dentro.
-
-### Cómo se usa
+**Desde el código**, si preferís ver qué estás ejecutando:
 
 ```bash
 git clone https://github.com/Maurio6/EpicPenFreeVersion.git
@@ -44,6 +43,17 @@ python -m epicpen
 ```
 
 Doble click en `EpicPen.pyw` lo abre igual, pero sin la ventana negra de consola detrás.
+
+### Requisitos
+
+- **Windows 10 u 11**
+- Solo si lo corrés desde el código: **Python 3.8 o superior** con tkinter (viene incluido en el
+  instalador oficial de [python.org](https://python.org); es la opción *tcl/tk and IDLE*, marcada
+  por defecto)
+
+**No hay librerías que instalar.** Todo sale de la biblioteca estándar: `tkinter` para la interfaz,
+`ctypes` para hablar con Windows y `zlib` para escribir los PNG. Por eso no vas a encontrar un
+`requirements.txt` en el repo: no hay nada que poner dentro.
 
 Al arrancar aparece una barra vertical a la derecha en **modo click**: la tinta que dibujaste sigue
 viéndose, pero los clicks pasan de largo hacia las aplicaciones de abajo. Pulsá **F9** (o el botón
@@ -111,6 +121,16 @@ Sin framework ni dependencias: son asserts sobre un canvas falso. Cubren el mode
 el halo sobreviva a la goma, que el PNG generado sea válido, la conversión de coordenadas con
 varios monitores y que la barra no pueda quedar fuera de la pantalla.
 
+### Compilar el ejecutable
+
+```bash
+pip install pyinstaller
+python -m PyInstaller --onefile --noconsole --name EpicPen EpicPen.pyw
+```
+
+Queda en `dist/EpicPen.exe`. PyInstaller hace falta solo para compilar: el programa en sí sigue sin
+depender de nada.
+
 ### Limitaciones conocidas
 
 - **Solo Windows.** Todo se apoya en la API del sistema.
@@ -139,17 +159,14 @@ over the whole desktop and lets you draw on it while still using the apps undern
 - Save the annotated screen as PNG
 - Click-through mode: the ink stays visible while you keep using your computer normally
 
-### Requirements
+### Download
 
-- **Windows 10 or 11**
-- **Python 3.8+** with tkinter (bundled with the official installer from
-  [python.org](https://python.org) — the *tcl/tk and IDLE* option, checked by default)
+**The easy way:** grab `EpicPen.exe` from
+[Releases](https://github.com/Maurio6/EpicPenFreeVersion/releases) and double-click it. It is 11 MB,
+there is no installer, and **you do not need Python**. It is not code-signed, so Windows may show a
+SmartScreen warning the first time: *More info → Run anyway*.
 
-**There is nothing to install.** Everything comes from the standard library: `tkinter` for the UI,
-`ctypes` to talk to Windows, and `zlib` to write PNGs. That is why there is no `requirements.txt`
-in this repo — there would be nothing to put in it.
-
-### Usage
+**From source**, if you would rather see what you are running:
 
 ```bash
 git clone https://github.com/Maurio6/EpicPenFreeVersion.git
@@ -158,6 +175,16 @@ python -m epicpen
 ```
 
 Double-clicking `EpicPen.pyw` runs the same thing without a console window behind it.
+
+### Requirements
+
+- **Windows 10 or 11**
+- Only when running from source: **Python 3.8+** with tkinter (bundled with the official installer
+  from [python.org](https://python.org) — the *tcl/tk and IDLE* option, checked by default)
+
+**There is nothing to install.** Everything comes from the standard library: `tkinter` for the UI,
+`ctypes` to talk to Windows, and `zlib` to write PNGs. That is why there is no `requirements.txt`
+in this repo — there would be nothing to put in it.
 
 It starts in **click mode** with a vertical toolbar on the right: your ink stays visible, but clicks
 pass through to the apps below. Press **F9** (or the circle button) to start drawing. Drag the
@@ -221,6 +248,16 @@ python test_epicpen.py
 No framework, no dependencies — just asserts against a fake canvas. They cover the drawing model,
 the halo surviving the eraser, the generated PNG being valid, coordinate translation across
 monitors, and the toolbar never landing off-screen.
+
+### Building the executable
+
+```bash
+pip install pyinstaller
+python -m PyInstaller --onefile --noconsole --name EpicPen EpicPen.pyw
+```
+
+It lands in `dist/EpicPen.exe`. PyInstaller is only needed to build: the program itself still
+depends on nothing.
 
 ### Known limitations
 
