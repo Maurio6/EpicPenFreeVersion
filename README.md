@@ -1,9 +1,16 @@
 # EpicPenFreeVersion
 
-Anotá sobre cualquier cosa que tengas en pantalla: presentaciones, videos, código, el navegador.
-Sin instalar nada más que Python.
+[![Descargar](https://img.shields.io/github/v/release/Maurio6/EpicPenFreeVersion?label=descargar%20.exe&color=e5484d)](https://github.com/Maurio6/EpicPenFreeVersion/releases/latest)
+[![Descargas](https://img.shields.io/github/downloads/Maurio6/EpicPenFreeVersion/total?label=descargas&color=31d843)](https://github.com/Maurio6/EpicPenFreeVersion/releases)
+[![Licencia](https://img.shields.io/github/license/Maurio6/EpicPenFreeVersion?label=licencia)](LICENSE)
+![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d4)
+![Dependencias](https://img.shields.io/badge/dependencias-0-31d843)
 
-*Draw on top of anything on your screen — slides, videos, code, the browser. No dependencies beyond Python.*
+Anotá sobre cualquier cosa que tengas en pantalla: presentaciones, videos, código, el navegador.
+Una alternativa libre y de código abierto a Epic Pen, en un solo `.exe` que no instala nada.
+
+*Free and open source screen annotation for Windows — an Epic Pen alternative. Draw on top of
+slides, videos, code or the browser. Single portable `.exe`, no installer, no dependencies.*
 
 ![EpicPen anotando una presentación](docs/demo.png)
 
