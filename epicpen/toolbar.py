@@ -55,6 +55,8 @@ class Toolbar:
         self.panel.pack(fill="x")  # abierto de entrada: si no, nadie descubre los colores
 
         self._sep()
+        self.board_button = self._button("▦", app.cycle_backdrop,
+                                         "Pizarra: oscura / clara / apagada (F7)")
         self.spot_button = self._button("◎", app.toggle_spotlight, "Resaltar el puntero (F8)")
         self._button("↶", app.undo, "Deshacer (F11)")
         self._button("⊘", app.clear, "Limpiar todo (F10)")
@@ -171,6 +173,10 @@ class Toolbar:
                            font=("Segoe UI Symbol", 7))
         self.spot_button.config(bg=ACTIVE if app.spotlight_on else BG,
                                 fg="#ffffff" if app.spotlight_on else FG)
+        # el propio boton se pinta del color de la pizarra: se ve cual esta puesta
+        board_look = {None: (BG, FG), "dark": ("#101216", "#ffffff"),
+                      "light": ("#f7f5f0", "#101216")}[app.backdrop]
+        self.board_button.config(bg=board_look[0], fg=board_look[1])
         self.toggle_button.config(text="◉" if app.drawing else "○",
                                   fg="#31d843" if app.drawing else FG)
         self.win.after_idle(self.pin)

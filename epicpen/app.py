@@ -19,6 +19,7 @@ LIFT_MS = 2000
 CURSOR_MS = 16    # ~60 fps para que el halo no vaya a rastras del puntero
 HIDE_MS = 150     # margen para que Windows repinte donde estaba la barra
 SHOTS_DIR = Path.home() / "Pictures" / "EpicPen"
+BACKDROP_CYCLE = (None, "dark", "light")
 
 
 class App:
@@ -37,6 +38,7 @@ class App:
         self.toast = Toast(self.root, self.screen)
 
         self.drawing = False
+        self._backdrop = None
         self._pressed = False
         self._modal = False
         self._events = deque()
@@ -61,6 +63,10 @@ class App:
     def spotlight_on(self):
         return self.spotlight.enabled
 
+    @property
+    def backdrop(self):
+        return self._backdrop
+
     def set_mode(self, mode):
         self.board.mode = mode
         self.set_drawing(True)
@@ -78,6 +84,16 @@ class App:
             self._modal = False
         if chosen:
             self.set_color(chosen)
+
+    def cycle_backdrop(self):
+        """Apagado -> pizarra oscura -> pizarra clara -> apagado."""
+        self._backdrop = BACKDROP_CYCLE[(BACKDROP_CYCLE.index(self._backdrop) + 1)
+                                        % len(BACKDROP_CYCLE)]
+        self.overlay.set_backdrop(self._backdrop)
+        if self._backdrop:
+            self.set_drawing(True)  # con la pizarra puesta no hay nada debajo que clickear
+        else:
+            self._refresh()
 
     def toggle_spotlight(self):
         if self.spotlight.toggle():
@@ -170,6 +186,9 @@ class App:
         return False  # tragarse WM_MOUSEMOVE congela el cursor del sistema
 
     def _on_key(self, vk):
+        if vk == win32.VK_F7:
+            self._events.append(("backdrop", 0, 0))
+            return True
         if vk == win32.VK_F8:
             self._events.append(("spotlight", 0, 0))
             return True
@@ -197,6 +216,7 @@ class App:
     def _drain(self):
         actions = {"clear": self.clear, "undo": self.undo, "save": self.save_shot,
                    "toggle": self.toggle_drawing, "spotlight": self.toggle_spotlight,
+                   "backdrop": self.cycle_backdrop,
                    "stop": lambda: self.set_drawing(False)}
         while self._events:
             kind, sx, sy = self._events.popleft()

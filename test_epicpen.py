@@ -158,6 +158,33 @@ def check_lost_button_up():
         a.quit()
 
 
+def check_backdrop():
+    """La pizarra va debajo de la tinta y no la borran ni la goma ni "limpiar"."""
+    from epicpen.app import App
+    a = App()
+    try:
+        canvas = a.overlay.canvas
+        a.board.down(10, 10); a.board.move(60, 60); a.board.up(60, 60)
+        tinta = a.board.strokes[-1][0]
+
+        a.cycle_backdrop()
+        assert a.backdrop == "dark"
+        fondo = a.overlay._backdrop
+        assert canvas.find_all()[0] == fondo, "la pizarra tapa la tinta que ya estaba"
+
+        a.board.mode = "eraser"; a.board.down(10, 10)   # borra tinta, no la pizarra
+        assert fondo in canvas.find_all() and tinta not in canvas.find_all()
+        a.board.clear()
+        assert canvas.find_all() == (fondo,)
+
+        a.cycle_backdrop()
+        assert a.backdrop == "light" and len(canvas.find_all()) == 1
+        a.cycle_backdrop()
+        assert a.backdrop is None and canvas.find_all() == ()
+    finally:
+        a.quit()
+
+
 def check_toolbar_stays_on_screen():
     """Al arrancar tiene que caber entera, y ni arrastrandola debe poder salirse."""
     from epicpen.app import App
@@ -183,6 +210,7 @@ def main():
     check_png()
     check_virtual_desktop_offset()
     check_lost_button_up()
+    check_backdrop()
     check_toolbar_stays_on_screen()
     print("ok")
 

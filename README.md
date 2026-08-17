@@ -29,6 +29,7 @@ que hay debajo.
 - Lápiz, resaltador y goma
 - Formas: línea, rectángulo y elipse
 - Nueve colores a mano y selector para cualquier otro
+- **Modo pizarra**: tapá la pantalla con un fondo oscuro o claro y escribí sobre él
 - Halo que sigue al puntero, para señalar mientras explicás
 - Deshacer y limpiar
 - Guardar la pantalla anotada como PNG
@@ -68,6 +69,7 @@ del círculo) para empezar a dibujar. La barra se arrastra desde el `≡` de arr
 
 | Tecla | Qué hace |
 |-------|----------|
+| `F7`  | Pizarra: oscura → clara → apagada |
 | `F8`  | Resaltar el puntero |
 | `F9`  | Alternar dibujar / click |
 | `F10` | Limpiar todo |
@@ -80,6 +82,10 @@ abre el explorador con el archivo ya seleccionado.
 
 El botón de formas cambia entre línea, rectángulo y elipse: el primer click la selecciona y los
 siguientes van rotando entre las tres.
+
+Con la **pizarra** puesta la pantalla queda tapada, así que los clicks ya no llegan a lo que había
+debajo: es lo que querés para explicar algo desde cero, y se sale con `F7` o desde la barra, que
+sigue encima. La tinta que ya habías dibujado se conserva por encima del fondo.
 
 ### Cómo funciona por dentro
 
@@ -161,6 +167,7 @@ over the whole desktop and lets you draw on it while still using the apps undern
 - Pen, highlighter and eraser
 - Shapes: line, rectangle and ellipse
 - Nine colors at hand, plus a picker for any other
+- **Whiteboard mode**: cover the screen with a dark or light backdrop and write on it
 - A halo that follows the cursor, for pointing while you explain
 - Undo and clear
 - Save the annotated screen as PNG
@@ -199,6 +206,7 @@ toolbar by the `≡` handle at the top.
 
 | Key   | Action |
 |-------|--------|
+| `F7`  | Whiteboard: dark → light → off |
 | `F8`  | Highlight the cursor |
 | `F9`  | Toggle draw / click-through |
 | `F10` | Clear everything |
@@ -211,6 +219,10 @@ the file already selected.
 
 The shapes button cycles line → rectangle → ellipse: the first click selects it, further clicks
 rotate through the three.
+
+With the **whiteboard** on, the screen is covered, so clicks no longer reach what was underneath —
+which is the point when you are explaining something from scratch. Leave it with `F7` or from the
+toolbar, which stays on top. Ink drawn earlier is kept above the backdrop.
 
 ### How it works
 
